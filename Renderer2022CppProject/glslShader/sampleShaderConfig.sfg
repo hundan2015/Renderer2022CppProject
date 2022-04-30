@@ -1,0 +1,13 @@
+name sampleShader
+
+simple2.vs begin
+mat4 model
+mat4 view
+mat4 projection
+end
+
+simplePhong.fs begin
+sampler2D texture_Diffuse1
+end
+
+ends

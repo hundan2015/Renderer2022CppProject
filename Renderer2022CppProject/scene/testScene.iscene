@@ -1,0 +1,29 @@
+testScene
+
+Camera MainCamera
+	uuid 309F8A6E-9ED8-04DA-7096-64DD2C0563E6
+	0,0,0
+	0,0,0
+MainCamera end
+
+Object gameObject
+	uuid 41566CA0-9285-61A4-FDE0-FB70447B394B
+	translate 0,0,0
+	rotate 0,0,0
+	Component MeshRenderer
+		/model/backpack/backpack.obj
+		/glsl/simple.vs
+		/glsl/simple.fs
+	MeshRenderer end
+
+	Child
+		Object childObject
+			uuid 99993E2E-05DB-06F3-864A-7B5A60F0D4DC
+			translate 0,0,0
+			rotate 0,0,0
+		childObject end
+	Child end
+
+gameObject end
+
+testScene end
