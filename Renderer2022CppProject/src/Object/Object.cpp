@@ -1,6 +1,9 @@
 #include "Object.h"
 #include<glm/gtc/quaternion.hpp>
 
+static class ObjectManager;
+//unsigned int ObjectManager::width, ObjectManager::height;
+//什么时候改写什么时候不该写呢？
 void Object::addCompoment(Component* com) {
 	compomentList.insert(make_pair(compomentList.size(), com));
 	com->masterObject = this;
@@ -47,11 +50,9 @@ Object::Object(string name, glm::vec3 pos) {
 	setPosition(pos);
 	//this->compomentManager = comM;
 	this->name = name;
-	ObjectManager::registerObject(this);
 }
 
 Object::~Object() {
-	ObjectManager::deleteObject(this->uuid);//这块有个问题就是object没有封装好，应该是objectManager管理整个生命周期？？
 	if (compomentList.empty()) {
 		return;
 	}
@@ -62,17 +63,15 @@ Object::~Object() {
 }
 
 /* Camera Part */
-Camera::Camera(vector<Component*>* initCompomentList, glm::vec3 pos, int width, int height) :Object("MainCamera", initCompomentList, pos) {
-	this->width = width;
-	this->height = height;
+Camera::Camera(vector<Component*>* initCompomentList, glm::vec3 pos) :Object("MainCamera", initCompomentList, pos) {
+	
 }
 
 glm::mat4 Camera::getPerspective() {
-	return glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);
+	return glm::perspective(glm::radians(45.0f), (float)ObjectManager::width / (float)ObjectManager::height, 0.1f, 100.0f);
 }
-Camera::Camera(glm::vec3 pos, int width, int height) : Object("MainCamera", pos) {
-	this->width = width;
-	this->height = height;
+Camera::Camera(glm::vec3 pos) : Object("MainCamera", pos) {
+	
 }
 glm::mat4 Camera::getCamaraView() {
 	glm::mat4 posMat = glm::mat4(1.f);

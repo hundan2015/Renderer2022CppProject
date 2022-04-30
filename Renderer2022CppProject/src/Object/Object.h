@@ -16,8 +16,7 @@ extern enum ObjectType
 	LIGHT
 };
 class Component;
-class ComponentManager;
-static class ObjectManager;
+static class ComponentManager;
 class Object
 {
 	map<int, Component*> compomentList;
@@ -40,11 +39,9 @@ public:
 };
 
 class Camera :public Object {
-	int height;
-	int width;
 public:
-	Camera(vector<Component*>* initCompomentList, glm::vec3 pos, int width, int height);
+	Camera(vector<Component*>* initCompomentList, glm::vec3 pos);
 	glm::mat4 getPerspective();
-	Camera(glm::vec3 pos, int width, int height);
+	Camera(glm::vec3);
 	glm::mat4 getCamaraView();
 };

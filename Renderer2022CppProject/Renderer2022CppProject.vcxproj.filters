@@ -445,6 +445,7 @@
       <Filter>源文件</Filter>
     </None>
     <None Include="scene\testScene.iscene" />
+    <None Include="glslShader\pbrShader.fs" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\assimp-vc143-mt.lib" />
@@ -1354,6 +1355,15 @@
     <ClInclude Include="src\ActionManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Object\Light.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Object\LightManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shader\ShaderManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\glad\glad.c">
@@ -1405,6 +1415,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\ActionManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Object\Light.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Object\LightManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader\ShaderManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

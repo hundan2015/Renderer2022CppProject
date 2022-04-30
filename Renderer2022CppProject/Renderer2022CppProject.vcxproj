@@ -145,6 +145,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="glslShader\1.model_loading.fs" />
+    <None Include="glslShader\pbrShader.fs">
+      <SubType>
+      </SubType>
+    </None>
     <None Include="glslShader\simple2.vs" />
     <None Include="glslShader\sample.fs" />
     <None Include="glslShader\sample.vs" />
@@ -299,6 +303,9 @@
     <Library Include="lib\glfw3_mt.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Shader\ShaderManager.h" />
+    <ClInclude Include="src\Object\LightManager.h" />
+    <ClInclude Include="src\Object\Light.h" />
     <ClInclude Include="src\ActionManager.h" />
     <ClInclude Include="src\Compoments\Movement.h" />
     <ClInclude Include="src\Compoments\ComponentManager.h" />
@@ -601,6 +608,9 @@
     <ClInclude Include="src\Compoments\Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Shader\ShaderManager.cpp" />
+    <ClCompile Include="src\Object\LightManager.cpp" />
+    <ClCompile Include="src\Object\Light.cpp" />
     <ClCompile Include="src\ActionManager.cpp" />
     <ClCompile Include="src\Compoments\Movement.cpp" />
     <ClCompile Include="src\Compoments\ComponentManager.cpp" />

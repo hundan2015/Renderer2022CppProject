@@ -14,7 +14,9 @@
 #include"Mesh/Model.h"
 #include"Compoments/MeshRenderer.h"
 #include"Shader/Shader.h"
+
 #include"Compoments/ComponentManager.h"
+#include"Shader/ShaderManager.h"
 
 #include"ActionManager.h"
 #include"Compoments/Time.h"
@@ -26,8 +28,9 @@ using namespace std;
 static class ComponentManager;
 static class ObjectManager;
 static class ActionManager;
-
+static class ShaderManager;
 static class Time;
+
 float Time::lastTime;
 void processInput(GLFWwindow* window);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -55,13 +58,17 @@ int main() {
 	stbi_set_flip_vertically_on_load(true);
 	glEnable(GL_DEPTH_TEST);
 	Time::lastTime = glfwGetTime();
+	ObjectManager::width = SCR_WIDTH;
+	ObjectManager::height = SCR_HEIGHT;
 
-	Camera* MainCamera=new Camera(glm::vec3(1.,2.,10),SCR_WIDTH,SCR_HEIGHT);
+	Camera* MainCamera=new Camera(glm::vec3(1.,2.,10));
 	MainCamera->addCompoment(new Movement(1.f));
 	ObjectManager::changeCamera(MainCamera);
-	Shader ourShader("glslShader\\simple2.vs", "glslShader\\simplePhong.fs");
+	//The follow line means that shader object is reflectable.
+	ShaderManager::makeNewShader("ourShader", "glslShader\\simple2.vs", "glslShader\\simplePhong.fs");
+	//Todo Object reflectable.
 	Object gameObject("shit",glm::vec3(0,0,0));
-	gameObject.addCompoment(new MeshRenderer("model/backpack/backpack.obj",&ourShader));
+	gameObject.addCompoment(new MeshRenderer("model/backpack/backpack.obj",ShaderManager::getShader("ourShader")));
 	ObjectManager::registerObject(&gameObject);
 
 
@@ -82,6 +89,8 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	// make sure the viewport matches the new window dimensions; note that width and 
 	// height will be significantly larger than specified on retina displays.
 	glViewport(0, 0, width, height);
+	ObjectManager::width = width;
+	ObjectManager::height = height;
 }
 
 void processInput(GLFWwindow* window)
