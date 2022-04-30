@@ -299,6 +299,8 @@
     <Library Include="lib\glfw3_mt.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ActionManager.h" />
+    <ClInclude Include="src\Compoments\Movement.h" />
     <ClInclude Include="src\Compoments\ComponentManager.h" />
     <ClInclude Include="src\CommandManager.h" />
     <ClInclude Include="src\Object\ObjectManager.h" />
@@ -596,13 +598,15 @@
     <ClInclude Include="src\Shader\Shader.h" />
     <ClInclude Include="src\Mesh\Mesh.h" />
     <ClInclude Include="src\Object\UUid.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="src\Compoments\Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\ActionManager.cpp" />
+    <ClCompile Include="src\Compoments\Movement.cpp" />
     <ClCompile Include="src\Compoments\ComponentManager.cpp" />
     <ClCompile Include="src\CommandManager.cpp" />
     <ClCompile Include="src\Object\UUid.cpp" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="src\Compoments\Time.cpp" />
     <None Include="glslShader\simplePhong.fs">
       <FileType>Text</FileType>
     </None>

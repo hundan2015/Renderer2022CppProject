@@ -37,9 +37,8 @@ void ComponentManager::compomentFixedUpdate() {
 	}
 }
 
-/*
+
 Component* ComponentManager::componentConstructor(std::string name, std::vector<publicProperty> propertyList)
 {
 	return nullptr;
 }
-*/

@@ -9,11 +9,15 @@
 #include"Object/Object.h"
 #include"Object/ObjectManager.h"
 #include"Compoments/Compoment.h"
+#include"Compoments/Movement.h"
 
 #include"Mesh/Model.h"
 #include"Compoments/MeshRenderer.h"
 #include"Shader/Shader.h"
 #include"Compoments/ComponentManager.h"
+
+#include"ActionManager.h"
+#include"Compoments/Time.h"
 
 const unsigned int SCR_WIDTH = 1600;
 const unsigned int SCR_HEIGHT = 1200;
@@ -21,6 +25,10 @@ const unsigned int SCR_HEIGHT = 1200;
 using namespace std;
 static class ComponentManager;
 static class ObjectManager;
+static class ActionManager;
+
+static class Time;
+float Time::lastTime;
 void processInput(GLFWwindow* window);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 int main() {
@@ -43,11 +51,13 @@ int main() {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
+	ActionManager::window = window;
 	stbi_set_flip_vertically_on_load(true);
 	glEnable(GL_DEPTH_TEST);
-
+	Time::lastTime = glfwGetTime();
 
 	Camera* MainCamera=new Camera(glm::vec3(1.,2.,10),SCR_WIDTH,SCR_HEIGHT);
+	MainCamera->addCompoment(new Movement(1.f));
 	ObjectManager::changeCamera(MainCamera);
 	Shader ourShader("glslShader\\simple2.vs", "glslShader\\simplePhong.fs");
 	Object gameObject("shit",glm::vec3(0,0,0));
@@ -58,6 +68,7 @@ int main() {
 	while (!glfwWindowShouldClose(window)) {
 		glClearColor(0.05f, 0.5f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		Time::caculateDeltaTime();
 		processInput(window);
 		ComponentManager::compomentUpdate();
 		glfwSwapBuffers(window);

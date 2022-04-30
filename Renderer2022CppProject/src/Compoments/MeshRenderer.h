@@ -13,15 +13,16 @@ public:
 	MeshRenderer(const char* modelFilePath, Shader* shader);
 	void Update() override;
 };
-/*
-Component* meshRendererConstuctor(vector<publicProperty> publicP) {
+
+//这玩意应该封装成一个类
+static Component* meshRendererConstuctor(vector<publicProperty> publicP) {
 	string modelFilePath, shaderUUid;
 	for (auto i : publicP) {
 		string pName = i.name;
 		if (pName == "modelFilePath") {
 			modelFilePath = i.value;
 		}
-		else if(pName=="shaderUUid")
+		else if (pName == "shaderUUid")
 		{
 			shaderUUid = i.value;
 		}
@@ -36,4 +37,4 @@ Component* meshRendererConstuctor(vector<publicProperty> publicP) {
 		cout << "ERROR::meshConstructor::Faild to create MeshRenderer." << endl;
 		return nullptr;
 	}
-}*/
+}

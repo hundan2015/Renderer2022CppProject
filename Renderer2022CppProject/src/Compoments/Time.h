@@ -8,11 +8,15 @@
 
 static class Time
 {
-	static float lastTime;
 public:
+	static float lastTime;
 	static float deltaTime;
 	static void caculateDeltaTime() {
 		float timeNow = glfwGetTime();
+		if (lastTime == -1) {
+			deltaTime = 0;
+			return;
+		}
 		deltaTime = timeNow - lastTime;
 		lastTime = timeNow;
 	}

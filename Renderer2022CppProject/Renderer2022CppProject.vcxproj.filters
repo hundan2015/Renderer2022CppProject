@@ -1342,10 +1342,16 @@
     <ClInclude Include="src\CommandManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
+    <ClInclude Include="src\Compoments\Time.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Compoments\ComponentManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Compoments\Movement.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ActionManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1389,10 +1395,16 @@
     <ClCompile Include="src\CommandManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
+    <ClCompile Include="src\Compoments\Time.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Compoments\ComponentManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Compoments\Movement.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ActionManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
