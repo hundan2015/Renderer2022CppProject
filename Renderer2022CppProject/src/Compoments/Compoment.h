@@ -5,10 +5,9 @@
 #include<queue>
 #include<algorithm>
 #include"../Object/Object.h"
-#include"ComponentManager.h"
 
 class Object;
-static class ComponentManager;
+
 struct publicProperty {
 	std::string name;
 	std::string type;

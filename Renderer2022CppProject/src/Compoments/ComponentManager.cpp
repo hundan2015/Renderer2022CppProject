@@ -1,4 +1,5 @@
 #include "ComponentManager.h"
+
 void ComponentManager::registerCompoment(Component* com) {
 	compomentGlobalList.insert(std::make_pair(compomentGlobalList.size(), com));
 }

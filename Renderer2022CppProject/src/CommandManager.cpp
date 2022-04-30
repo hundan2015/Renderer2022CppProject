@@ -1,6 +1,8 @@
 #include "CommandManager.h"
 #include"Mesh/Mesh.h"
 #include"Compoments/MeshRenderer.h"
+#include"CommandManager.h"
+#include"Compoments/ComponentManager.h"
 #include<sstream>
 using namespace std;
 /*
@@ -10,7 +12,7 @@ using namespace std;
 -delete
 	-uuid //delete Object.
 */
-
+static class ComponentManager;
 std::map<int, Component*> ComponentManager::compomentGlobalList;
 
 void CommandManager::commandAnalyzer(std::string commandLine) {
@@ -47,5 +49,5 @@ void CommandManager::commandAnalyzer(std::string commandLine) {
 void CommandManager::createMeshObject(string name, const char* modelFilePath, const char* vshaderFilePath, const char* fshaderPath, ObjectManager* objm, ComponentManager* comM) {
 	Shader* shader = new Shader(vshaderFilePath, fshaderPath);
 	Object* object = new Object(name, glm::vec3(0., 0., 0.));
-	object->addCompoment(new MeshRenderer(modelFilePath, shader));
+	object->addCompoment((Component*)(new MeshRenderer(modelFilePath, shader)));
 }
